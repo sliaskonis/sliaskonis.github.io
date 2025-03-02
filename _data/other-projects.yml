@@ -1,12 +1,11 @@
 - name: High Performance Computing
   url: https://github.com/sliaskonis/ECE180-High-Performance-Computing
   code: https://github.com/sliaskonis/ECE180-High-Performance-Computing
-  description: High Performance Computing (HPC) Class Assignments
+  description: Parallel K-Means clustering using OpenMP, 2D seperable convolution using CUDA, image histogram equalization using OpenMP/CUDA, N-Body simulation using OpenMP/CUDA
   used:
     - thing: C
     - thing: CUDA
     - thing: OpenMP
-    - thing: MPI
 
 - name: Local Sequence Alignment - FPGA Acceleration
   url: https://github.com/sliaskonis/Local-Sequence-Alignment-FPGA-Implementation
