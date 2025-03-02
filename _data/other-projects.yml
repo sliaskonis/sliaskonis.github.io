@@ -16,3 +16,23 @@
     - thing: Xilinx Vivado
     - thing: Xilinx Vitis HLS
     - thing: C/C++
+    - thing: OpenCL
+
+- name: Development of a circuit simulation program like SPICE
+  url: https://github.com/sliaskonis/spic
+  code: https://github.com/sliaskonis/spic
+  description: Implemented a complete circuit simulation program like SPICE in C++. Implemented parsing, equation formulation, and solution techniques (direct and iterative) for linear circuits. Utilized sparse matrix techniques and external libraries (Eigen) for efficient computation.
+  used:
+    - thing: C++
+    - thing: FLEX
+    - thing: Bison
+    - thing: CMAKE
+    - thing: Eigen
+
+- name: IEEE-754 Compatible Floating-Point Adder in Verilog on an FPGA
+  url: https://github.com/sliaskonis/Local-Sequence-Alignment-FPGA-Implementation
+  code: https://github.com/sliaskonis/Local-Sequence-Alignment-FPGA-Implementation
+  description: Designed, simulated, and implemented a Floating Point Unit on a Zedboard FPGA.
+  used:
+    - thing: Verilog
+    - thing: Xilinx Vivado
