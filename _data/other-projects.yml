@@ -1,7 +1,7 @@
 - name: High Performance Computing
   url: https://github.com/sliaskonis/ECE180-High-Performance-Computing
   code: https://github.com/sliaskonis/ECE180-High-Performance-Computing
-  description: Parallel K-Means clustering using OpenMP, 2D seperable convolution using CUDA, image histogram equalization using OpenMP/CUDA, N-Body simulation using OpenMP/CUDA
+  description: Parallel K-Means clustering using OpenMP, 2D seperable convolution using CUDA, image histogram equalization using OpenMP/CUDA, N-Body simulation using OpenMP/CUDA.
   used:
     - thing: C
     - thing: CUDA
@@ -10,7 +10,7 @@
 - name: Local Sequence Alignment - FPGA Acceleration
   url: https://github.com/sliaskonis/Local-Sequence-Alignment-FPGA-Implementation
   code: https://github.com/sliaskonis/Local-Sequence-Alignment-FPGA-Implementation
-  description: An optimized implementation of the Smith-Waterman algorithm for local sequence alignment on an FPGA
+  description: An optimized implementation of the Smith-Waterman algorithm for local sequence alignment on an FPGA.
   used:
     - thing: Xilinx Vivado
     - thing: Xilinx Vitis HLS
