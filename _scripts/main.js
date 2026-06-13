@@ -75,4 +75,33 @@
       observer.observe(el);
     });
   }
+
+  // Sidebar nav: highlight the section currently in view.
+  const navLinks = document.querySelectorAll('.sidebar__nav a');
+  if ('IntersectionObserver' in window && navLinks.length) {
+    const linkFor = {};
+    navLinks.forEach(function(link) {
+      linkFor[link.getAttribute('href')] = link;
+    });
+    const spy = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          const link = linkFor['#' + entry.target.id];
+          if (link && entry.isIntersecting) {
+            navLinks.forEach(function(l) {
+              l.classList.remove('active');
+            });
+            link.classList.add('active');
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    );
+    Object.keys(linkFor).forEach(function(hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        spy.observe(section);
+      }
+    });
+  }
 })();

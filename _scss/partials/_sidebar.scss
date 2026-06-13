@@ -1,0 +1,259 @@
+// ===== Two-column layout shell =====
+html {
+  scroll-behavior: smooth;
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include tablet {
+    display: block;
+    max-width: 700px;
+  }
+}
+
+// ===== Sidebar =====
+.sidebar {
+  position: sticky;
+  top: 0;
+  flex: 0 0 42%;
+  max-width: 460px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 50px 60px 70px;
+  @include desktop {
+    padding-left: 50px;
+  }
+  @include tablet {
+    position: static;
+    height: auto;
+    max-width: none;
+    flex: none;
+    padding: 80px 50px 20px;
+  }
+  @include mobile {
+    padding: 60px 30px 10px;
+  }
+
+  &__name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    color: $black;
+    @include desktop {
+      font-size: 2.1rem;
+    }
+    .emoji {
+      width: 0.9em;
+      height: 0.9em;
+      margin-left: 6px;
+    }
+  }
+
+  &__role {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 12px 0 0;
+    color: $blue;
+  }
+
+  &__blurb {
+    font-weight: 300;
+    font-size: 0.95rem;
+    max-width: 330px;
+    margin: 20px 0 0;
+    a {
+      @include transition;
+      font-weight: 400;
+      box-shadow: inset 0 -2px 0 $blue;
+      &:hover {
+        box-shadow: inset 0 -22px 0 $blue;
+        color: $white;
+      }
+    }
+  }
+
+  &__nav {
+    margin-top: 50px;
+    @include tablet {
+      display: none;
+    }
+    li {
+      margin-bottom: 16px;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: $grey;
+      &:hover,
+      &.active {
+        color: $blue;
+        .sidebar__nav-line {
+          width: 42px;
+          background: $blue;
+        }
+      }
+    }
+  }
+
+  &__nav-line {
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    margin-right: 16px;
+    background: $slate;
+    @include transition;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    @include tablet {
+      margin-top: 30px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    a {
+      display: inline-block;
+      margin-right: 20px;
+      @include transition;
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // The theme toggle lives in the sidebar footer row, not pinned to the corner.
+  .switch-wrapper {
+    position: static;
+    margin: 0;
+  }
+}
+
+// Waving hand (migrated from the old intro hero)
+.wave-hand {
+  background-image: url('../img/emojis/wave.png');
+  cursor: pointer;
+  display: inline-block;
+  &.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  &.wave {
+    animation-name: wave;
+  }
+}
+
+@keyframes wave {
+  from {
+    transform: none;
+  }
+  15% {
+    transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  30% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg);
+  }
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+  }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+// ===== Main content column =====
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 640px;
+  padding: 100px 0 80px 60px;
+  @include tablet {
+    padding: 0 50px 60px;
+    max-width: none;
+  }
+  @include mobile {
+    padding: 0 30px 50px;
+  }
+
+  // Stack each section (label on top of content) within the narrower column.
+  .section {
+    display: block;
+    padding: 0;
+    margin-bottom: 70px;
+    scroll-margin-top: 40px;
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+    &__title {
+      width: auto;
+      text-align: left;
+      margin: 0 0 22px;
+    }
+    &__content {
+      max-width: none;
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+// ===== Footer (sits at the bottom of the main column now) =====
+.main .footer {
+  display: block;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba($slate, 0.25);
+  &__credit {
+    margin: 0;
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.8rem;
+    color: $grey;
+  }
+}
+
+// ===== Dark theme tweaks for the sidebar =====
+html.night {
+  .sidebar__name {
+    color: $off-white;
+  }
+  .sidebar__role {
+    color: $accent;
+  }
+  .sidebar__nav a {
+    color: $slate;
+    &:hover,
+    &.active {
+      color: $off-white;
+      .sidebar__nav-line {
+        background: $off-white;
+      }
+    }
+  }
+  .main .footer {
+    border-top-color: rgba($slate, 0.2);
+  }
+}

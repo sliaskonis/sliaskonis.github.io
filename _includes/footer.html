@@ -1,10 +1,5 @@
 <footer class="footer">
-  <div class="footer__links">
-    {% for link in site.social %}
-    <a href="{{link.url}}" target="_blank" rel="noopener noreferrer" title="{{link.title}}">
-      <span class="text">{{link.title}}</span>
-      <img src="{{site.baseurl}}/img/social/{{link.title}}.svg" alt="{{link.title}}">
-    </a>
-    {% endfor %}
-  </div>
+  <p class="footer__credit">
+    Designed &amp; built by Spiros Liaskonis &middot; {{ site.time | date: '%Y' }}
+  </p>
 </footer>

@@ -1,0 +1,34 @@
+<aside class="sidebar">
+  <div class="sidebar__top">
+    <h1 class="sidebar__name">Spiros Liaskonis
+      <span class="emoji wave-hand animated"></span>
+    </h1>
+    <h2 class="sidebar__role">Computer Engineering student</h2>
+    <p class="sidebar__blurb">
+      I build and optimize systems - currently focused on FPGAs
+      and efficient deep learning at the
+      <a class="underline-link" href="https://www.uth.gr/en" target="_blank" rel="noopener noreferrer">University of Thessaly</a>.
+    </p>
+
+    <nav class="sidebar__nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about"><span class="sidebar__nav-line"></span>About</a></li>
+        <li><a href="#skills"><span class="sidebar__nav-line"></span>Skills</a></li>
+        <li><a href="#experience"><span class="sidebar__nav-line"></span>Experience</a></li>
+        <li><a href="#research"><span class="sidebar__nav-line"></span>Research</a></li>
+        <li><a href="#projects"><span class="sidebar__nav-line"></span>Projects</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="sidebar__bottom">
+    <div class="sidebar__social">
+      {% for link in site.social %}
+      <a href="{{link.url}}" target="_blank" rel="noopener noreferrer" title="{{link.title}}" aria-label="{{link.title}}">
+        <img src="{{site.baseurl}}/img/social/{{link.title}}.svg" alt="{{link.title}}">
+      </a>
+      {% endfor %}
+    </div>
+    {% include switch.html %}
+  </div>
+</aside>
