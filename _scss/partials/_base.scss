@@ -23,36 +23,42 @@ body {
   font-family: $Apercu;
   line-height: 1.5;
   width: 100%;
+}
 
-  &.night {
-    background-color: $night;
-    color: $slate;
-    ::selection {
-      color: $black;
-      background: $yellow;
+// Dark theme. The `.night` class is applied to <html> (see the inline script
+// in head.html) so the theme is set before the first paint.
+html.night,
+html.night body {
+  background-color: $night;
+  color: $slate;
+}
+
+html.night {
+  ::selection {
+    color: $black;
+    background: $yellow;
+  }
+  .switch-wrapper {
+    .sun {
+      background: url('../img/switch/sun-white.svg') no-repeat center;
+      background-size: 100%;
     }
-    .switch-wrapper {
-      .sun {
-        background: url('../img/switch/sun-white.svg') no-repeat center;
-        background-size: 100%;
-      }
-      .moon {
-        background: url('../img/switch/moon-white.svg') no-repeat center;
-        background-size: 100%;
-      }
+    .moon {
+      background: url('../img/switch/moon-white.svg') no-repeat center;
+      background-size: 100%;
     }
-    a,
-    strong,
-    .intro,
-    .skills .skillz__category__label,
-    .experience .job__time,
-    .footer__copyright,
-    .status {
-      color: $off-white;
-    }
-    .section__content .underline-link:after {
-      background: $off-white;
-    }
+  }
+  a,
+  strong,
+  .intro,
+  .skills .skillz__category__label,
+  .experience .job__time,
+  .footer__copyright,
+  .status {
+    color: $off-white;
+  }
+  .section__content .underline-link:after {
+    background: $off-white;
   }
 }
 
@@ -208,7 +214,6 @@ strong {
 }
 
 #top-button {
-  @include transition;
   background: transparent;
   border: none;
   outline: none;
@@ -217,7 +222,10 @@ strong {
   bottom: 25px;
   right: 10px;
   cursor: pointer;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+    transform 0.2s ease-in-out;
   @include desktop {
     bottom: 20px;
     right: 7px;
@@ -228,6 +236,10 @@ strong {
     right: 3px;
   }
 
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
   &:hover,
   &:focus {
     transform: translateY(-10px);

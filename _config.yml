@@ -2,7 +2,7 @@
 name: Spiros Liaskonis
 title: Spiros Liaskonis
 description: An aspiring computer engineer, driven by curiosity and a love for building, optimizing, and learning.
-url: https://sliaskonis.github.io/
+url: https://sliaskonis.github.io
 baseurl: ''
 email: spirosliaskonis@gmail.com
 cover: https://sliaskonis.github.io/img/og.png
@@ -26,16 +26,21 @@ exclude:
   - 'Gemfile.lock'
   - '*.gemspec'
   - 'README.md'
+  - 'AGENTS.md'
   - 'node_modules'
+  - 'vendor'
+  - '.bundle'
   - 'build'
   - 'gulpfile.js'
   - 'package.json'
+  - 'package-lock.json'
+  - '.eslintrc'
+  - '.prettierrc.js'
 
 keep_files:
   - 'CNAME'
   - '.git'
   - '.gitignore'
 
-plugins_dir:
-  - jekyll-minifier
+plugins:
   - jekyll-sitemap

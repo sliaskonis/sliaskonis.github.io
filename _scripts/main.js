@@ -1,87 +1,78 @@
-$(function() {
-  const d = new Date();
-  const hours = d.getHours();
-  const night = hours >= 19 || hours <= 7; // between 7pm and 7am
-  const body = document.querySelector('body');
-  const toggle = document.getElementById('toggle');
+(function() {
+  const html = document.documentElement;
+
+  // Theme toggle. The initial theme is applied by the inline script in <head>
+  // to avoid a flash; here we just sync the switch and persist user choices.
   const input = document.getElementById('switch');
-
-  if (input && night) {
-    input.checked = true;
-    body.classList.add('night');
-  }
-
-  if (toggle && input) {
-    toggle.addEventListener('click', function() {
-      const isChecked = input.checked;
-      if (isChecked) {
-        body.classList.remove('night');
-      } else {
-        body.classList.add('night');
+  if (input) {
+    input.checked = html.classList.contains('night');
+    input.addEventListener('change', function() {
+      const night = input.checked;
+      html.classList.toggle('night', night);
+      try {
+        localStorage.setItem('theme', night ? 'night' : 'day');
+      } catch (e) {
+        // localStorage may be unavailable (private mode); ignore.
       }
     });
   }
 
+  // Back-to-top button: show past the hero, smooth-scroll to top on click.
   const intro = document.querySelector('.intro');
   const topButton = document.getElementById('top-button');
-  const $topButton = $('#top-button');
-
   if (intro && topButton) {
     const introHeight = intro.offsetHeight;
-
     window.addEventListener(
       'scroll',
       function() {
-        if (window.scrollY > introHeight) {
-          $topButton.fadeIn();
-        } else {
-          $topButton.fadeOut();
-        }
+        topButton.classList.toggle('visible', window.scrollY > introHeight);
       },
-      false
+      { passive: true }
     );
-
     topButton.addEventListener('click', function() {
-      $('html, body').animate({ scrollTop: 0 }, 500);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
+  // Waving hand: once on load, and on hover.
   const hand = document.querySelector('.emoji.wave-hand');
-
   if (hand) {
-    function waveOnLoad() {
+    const startWave = function() {
       hand.classList.add('wave');
-      setTimeout(function() {
-        hand.classList.remove('wave');
-      }, 2000);
-    }
-
-    setTimeout(function() {
-      waveOnLoad();
-    }, 1000);
-
-    hand.addEventListener('mouseover', function() {
-      hand.classList.add('wave');
-    });
-
-    hand.addEventListener('mouseout', function() {
+    };
+    const stopWave = function() {
       hand.classList.remove('wave');
-    });
+    };
+    setTimeout(function() {
+      startWave();
+      setTimeout(stopWave, 2000);
+    }, 1000);
+    hand.addEventListener('mouseover', startWave);
+    hand.addEventListener('mouseout', stopWave);
   }
 
-  if (typeof ScrollReveal === 'function') {
-    window.sr = ScrollReveal({
-      reset: false,
-      duration: 600,
-      easing: 'cubic-bezier(.694,0,.335,1)',
-      scale: 1,
-      viewFactor: 0.3,
+  // Reveal sections on scroll (progressive enhancement: without JS or
+  // IntersectionObserver support, sections simply render visible).
+  const revealEls = document.querySelectorAll(
+    '.background, .focus_areas, .research-interests, .skills, .experience, .other-projects'
+  );
+  if ('IntersectionObserver' in window && revealEls.length) {
+    revealEls.forEach(function(el) {
+      el.classList.add('waypoint');
     });
-
-    sr.reveal('.background');
-    sr.reveal('.skills');
-    sr.reveal('.experience', { viewFactor: 0.2 });
-    sr.reveal('.featured-projects', { viewFactor: 0.1 });
-    sr.reveal('.other-projects', { viewFactor: 0.05 });
+    const observer = new IntersectionObserver(
+      function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0 }
+    );
+    revealEls.forEach(function(el) {
+      observer.observe(el);
+    });
   }
-});
+})();

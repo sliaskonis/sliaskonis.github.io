@@ -23,15 +23,16 @@ You need the following installed locally:
 
 Node version notes:
 
-- `.nvmrc` is included (`v10.13.0`) for the original project setup
-- The Sass toolchain in this repo has been updated to use Dart Sass, which avoids the old `node-sass` install issue on newer Node versions
+- `.nvmrc` pins Node `20` (run `nvm use` to match). Any current LTS works.
+- The Sass toolchain uses Dart Sass (`sass` + `gulp-sass`), which avoids the old `node-sass` install issues on newer Node versions.
 
 ## Getting Started
 
 1. Install dependencies:
 
 ```bash
-npm install
+npm install      # Node tooling (Gulp, Sass, ESLint)
+bundle install   # Ruby tooling (Jekyll + jekyll-sitemap), pinned by Gemfile.lock
 ```
 
 2. Start local development (build + serve + watch):
