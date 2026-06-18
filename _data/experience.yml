@@ -1,8 +1,8 @@
-# - company: TIMA Laboratory, Grenoble, France
-#   url: https://tima.univ-grenoble-alpes.fr/
-#   time: March 2026 - Present
-#   position: Research Intern
-#   description:
+- company: TIMA Laboratory, Université Grenoble Alpes
+  url: https://tima.univ-grenoble-alpes.fr/
+  time: February 2026 - Present
+  position: Research Intern
+  description: "Working on nnawaq, an open-source tool for deploying neural networks on FPGAs. On the development side: adding support for split network inference, new Tcl commands, RTL wrappers for instantiating multiple NN instances, and Aurora IP core integration for inter-FPGA communication via SFP+ high-speed serial links over fiber optics. On the research side: investigating optimal neural network partitioning strategies for multi-FPGA clusters, accounting for board count/available resources."
 
 - company: University of Thessaly
   url: https://www.e-ce.uth.gr/studies/undergraduate/courses/ece219/?lang=en
