@@ -8,6 +8,8 @@ email: spirosliaskonis@gmail.com
 cover: https://sliaskonis.github.io/img/og.png
 logo: https://sliaskonis.github.io/img/emojis/technologist.png
 resume: https://sliaskonis.github.io/resume.pdf
+# GoatCounter analytics code (https://<code>.goatcounter.com). Leave blank to disable.
+goatcounter: ''
 social:
   - title: email
     url: mailto:spirosliaskonis@gmail.com
