@@ -25,6 +25,30 @@
 <meta name="twitter:title" content="{{site.title}}">
 <meta name="twitter:description" content="{{site.description}}">
 <meta name="twitter:image:src" content="{{site.cover}}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}",
+  "image": "{{ site.logo }}",
+  "email": "{{ site.email }}",
+  "jobTitle": "Computer Engineering Student",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "TIMA Laboratory, Université Grenoble Alpes"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Thessaly"
+  },
+  "knowsAbout": ["FPGA", "Hardware Acceleration", "Efficient Deep Learning", "Neural Network Quantization", "Edge AI", "High Performance Computing"],
+  "sameAs": [
+{%- assign profiles = site.social | where_exp: "s", "s.url contains 'http'" -%}
+{% for s in profiles %}    "{{ s.url }}"{% unless forloop.last %},{% endunless %}
+{% endfor %}  ]
+}
+</script>
 <script>
   // Set the theme before first paint to avoid a flash.
   // Priority: saved choice > system preference > time of day (7pm–7am = night).
