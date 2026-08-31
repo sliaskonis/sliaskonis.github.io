@@ -1,9 +1,14 @@
 .experience {
   .jobs {
-    margin-bottom: 100px;
+    margin-bottom: 45px;
   }
   .job {
-    margin-bottom: 25px;
+    // A hairline between entries, so three roles do not read as one block.
+    & + .job {
+      margin-top: 26px;
+      padding-top: 26px;
+      border-top: 1px solid rgba($slate, 0.35);
+    }
     .time-place {
       display: flex;
       justify-content: space-between;
@@ -20,6 +25,10 @@
       @include mobile {
         font-size: 0.8rem;
       }
+    }
+    &__description {
+      margin-top: 6px;
+      font-size: 0.9rem;
     }
   }
   .arrow-link {

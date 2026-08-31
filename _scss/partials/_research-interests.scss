@@ -1,0 +1,32 @@
+// Two columns with a small dash marker, echoing the sidebar nav rules.
+.research-interests {
+  .interests {
+    // Column flow rather than a grid: items read down the first column, and a
+    // wrapped line cannot drag its neighbour out of alignment.
+    columns: 2;
+    column-gap: 30px;
+    @include weird-medium {
+      columns: 1;
+    }
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      break-inside: avoid;
+      font-size: 0.9rem;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 10px;
+        height: 1px;
+        background: $blue;
+      }
+    }
+  }
+}
+
+html.night .research-interests .interests li:before {
+  background: $blue-night;
+}

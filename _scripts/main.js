@@ -12,6 +12,10 @@
     input.addEventListener('change', function() {
       const night = input.checked;
       html.classList.toggle('night', night);
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) {
+        themeColor.setAttribute('content', night ? '#171c28' : '#ffffff');
+      }
       try {
         localStorage.setItem('theme', night ? 'night' : 'day');
       } catch (e) {

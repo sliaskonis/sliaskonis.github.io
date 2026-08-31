@@ -130,16 +130,18 @@
     display: flex;
     align-items: center;
     a {
-      display: inline-block;
+      display: inline-flex;
       margin-right: 20px;
+      color: $blue;
       @include transition;
       &:hover {
         transform: translateY(-3px);
       }
     }
-    img {
+    svg {
       width: 20px;
       height: 20px;
+      fill: currentColor;
     }
   }
 
@@ -152,7 +154,7 @@
 
 // Waving hand (migrated from the old intro hero)
 .wave-hand {
-  background-image: url('../img/emojis/wave.png');
+  background-image: url('../img/emojis/wave.webp');
   cursor: pointer;
   display: inline-block;
   &.animated {
@@ -224,21 +226,11 @@
   }
 }
 
-// ===== Footer (sits at the bottom of the main column now) =====
-.main .footer {
-  display: block;
-  padding: 30px 0 0;
-  border-top: 1px solid rgba($slate, 0.25);
-  &__credit {
-    margin: 0;
-    font-family: 'Inconsolata', monospace;
-    font-size: 0.8rem;
-    color: $grey;
-  }
-}
-
 // ===== Dark theme tweaks for the sidebar =====
 html.night {
+  .sidebar__social a {
+    color: $blue-night;
+  }
   .sidebar__name {
     color: $off-white;
   }
@@ -254,8 +246,5 @@ html.night {
         background: $off-white;
       }
     }
-  }
-  .main .footer {
-    border-top-color: rgba($slate, 0.2);
   }
 }

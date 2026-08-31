@@ -7,18 +7,22 @@ url: https://sliaskonis.com
 baseurl: ''
 email: spirosliaskonis@gmail.com
 cover: https://sliaskonis.com/img/og-card.png
-logo: https://sliaskonis.com/img/emojis/technologist.png
+logo: https://sliaskonis.com/img/apple-touch-icon.png
 resume: https://sliaskonis.com/resume.pdf
 # GoatCounter analytics code (https://<code>.goatcounter.com). Leave blank to disable.
 goatcounter: 'sliaskonis'
 social:
-  - title: email
+  - title: Email
+    icon: email
     url: mailto:spirosliaskonis@gmail.com
-  - title: twitter
-    url: https://twitter.com/SpirosLiaskonis
-  - title: github
+  - title: X
+    icon: x
+    url: https://x.com/SpirosLiaskonis
+  - title: GitHub
+    icon: github
     url: https://github.com/sliaskonis
-  - title: linkedin
+  - title: LinkedIn
+    icon: linkedin
     url: https://www.linkedin.com/in/spiros-liaskonis/
 
 # Build settings

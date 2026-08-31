@@ -1,14 +1,10 @@
 <section class="section research-interests" id="research">
   <h2 class="section__title">Research Interests</h2>
   <div class="section__content">
-    <div class="skillz">
-      <div class="skillz__category">
-        <ul>
-          {% for interest in site.data.research-interests.items %}
-          <li class="skillz__category__item">{{interest.item}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+    <ul class="interests">
+      {% for interest in site.data.research-interests.items %}
+      <li>{{interest.item}}</li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
