@@ -51,8 +51,10 @@
 }
 </script>
 <script>
-  // Set the theme before first paint to avoid a flash.
-  // Priority: saved choice > system preference > time of day (7pm–7am = night).
+  /* Set the theme before first paint to avoid a flash.
+     Priority: saved choice > system preference > time of day (7pm–7am = night).
+     Block comments only: the compress layout collapses this script onto one
+     line, so a // comment would swallow everything after it. */
   (function() {
     try {
       var stored = localStorage.getItem('theme');
