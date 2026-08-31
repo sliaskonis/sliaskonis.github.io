@@ -17,15 +17,15 @@
     });
   }
 
-  // Back-to-top button: show past the hero, smooth-scroll to top on click.
-  const intro = document.querySelector('.intro');
+  // Back-to-top button: show once the page has scrolled past the first
+  // screenful, smooth-scroll to top on click.
   const topButton = document.getElementById('top-button');
-  if (intro && topButton) {
-    const introHeight = intro.offsetHeight;
+  if (topButton) {
     window.addEventListener(
       'scroll',
       function() {
-        topButton.classList.toggle('visible', window.scrollY > introHeight);
+        const scrolled = window.scrollY > window.innerHeight * 0.6;
+        topButton.classList.toggle('visible', scrolled);
       },
       { passive: true }
     );
