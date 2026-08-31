@@ -83,9 +83,12 @@
     } catch (e) {}
   })();
 </script>
-<link rel="preload" href="{{ site.baseurl }}/fonts/apercu/Apercu-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ site.baseurl }}/fonts/apercu/Apercu-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ site.baseurl }}/fonts/apercu/Apercu-Bold.woff2" as="font" type="font/woff2" crossorigin>
+{%- comment -%}
+No rel=preload on the fonts: measured on a throttled connection it delayed
+this stylesheet by ~230ms and pushed first paint from 520ms to 740ms, while
+the fonts finished at the same moment either way - bandwidth, not discovery,
+is the constraint here. font-display: swap covers the gap.
+{%- endcomment -%}
 <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
 {% if site.goatcounter != '' %}
 <script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count"
