@@ -1,11 +1,12 @@
 # Site settings
 name: Spiros Liaskonis
 title: Spiros Liaskonis
+tagline: Computer Engineering student and Research Intern
 description: An aspiring computer engineer, driven by curiosity and a love for building, optimizing, and learning.
 url: https://sliaskonis.github.io
 baseurl: ''
 email: spirosliaskonis@gmail.com
-cover: https://sliaskonis.github.io/img/og.png
+cover: https://sliaskonis.github.io/img/og-card.png
 logo: https://sliaskonis.github.io/img/emojis/technologist.png
 resume: https://sliaskonis.github.io/resume.pdf
 # Keep analytics disabled in local dev so test visits aren't counted.
