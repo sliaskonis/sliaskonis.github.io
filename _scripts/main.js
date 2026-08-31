@@ -1,5 +1,8 @@
 (function() {
   const html = document.documentElement;
+  // Readers who ask for less motion get no reveals, no waving and no smooth
+  // scrolling; the stylesheet checks the same query.
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // Theme toggle. The initial theme is applied by the inline script in <head>
   // to avoid a flash; here we just sync the switch and persist user choices.
@@ -30,13 +33,13 @@
       { passive: true }
     );
     topButton.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: calm.matches ? 'auto' : 'smooth' });
     });
   }
 
   // Waving hand: once on load, and on hover.
   const hand = document.querySelector('.emoji.wave-hand');
-  if (hand) {
+  if (hand && !calm.matches) {
     const startWave = function() {
       hand.classList.add('wave');
     };
@@ -56,7 +59,7 @@
   const revealEls = document.querySelectorAll(
     '.background, .focus_areas, .research-interests, .skills, .experience, .other-projects'
   );
-  if ('IntersectionObserver' in window && revealEls.length) {
+  if ('IntersectionObserver' in window && revealEls.length && !calm.matches) {
     revealEls.forEach(function(el) {
       el.classList.add('waypoint');
     });

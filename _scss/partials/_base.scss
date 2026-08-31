@@ -60,6 +60,19 @@ html.night {
   .section__content .underline-link:after {
     background: $off-white;
   }
+  .section__title,
+  .project__used__item {
+    color: $blue-night;
+  }
+  .project__used__item {
+    border-color: $blue-night;
+  }
+  .not-found {
+    .name,
+    a {
+      color: $blue-night !important;
+    }
+  }
 }
 
 a {
@@ -118,7 +131,8 @@ strong {
   &__title {
     flex-shrink: 0;
     width: 200px;
-    margin-right: 70px;
+    margin: 0 70px 0 0;
+    font-size: 1rem;
     color: $blue;
     text-transform: uppercase;
     text-align: right;
@@ -216,7 +230,6 @@ strong {
 #top-button {
   background: transparent;
   border: none;
-  outline: none;
   width: 40px;
   position: fixed;
   bottom: 25px;
@@ -259,4 +272,17 @@ strong {
 .in-view {
   opacity: 1;
   transform: translateZ(0);
+}
+
+// Respect a reduced-motion preference: no reveals, no waving, no smooth
+// scrolling. main.js checks the same query before animating.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

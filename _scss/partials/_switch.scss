@@ -24,10 +24,24 @@
   .toggle-wrapper {
     margin: 10px;
     #switch {
-      height: 0;
-      width: 0;
-      visibility: hidden;
+      // Hidden visually but not from the keyboard: `visibility: hidden` (or
+      // `display: none`) would drop the toggle out of the tab order entirely.
       position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      &:focus-visible + label {
+        outline: 2px solid $blue;
+        outline-offset: 3px;
+        html.night & {
+          outline-color: $off-white;
+        }
+      }
       &:checked + label {
         background: $green;
       }
